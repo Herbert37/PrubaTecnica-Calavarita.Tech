@@ -22,11 +22,11 @@
 </template>
 
 <script>
-    const getCurrentDateTime = () => {
+    const getCurrentTime = () => {
         const date = new Date();
         let hour = date.getHours();
         let minuts = date.getMinutes();
-        return `${date.toDateString()}, ${hour}:${minuts}`;
+        return `${hour}:${minuts}`;
     }
     export default {
         name: 'FormTask',
@@ -35,8 +35,8 @@
                 tasks:[],
                 name: "",
                 description: "",
-                currentDatetime: getCurrentDateTime(),
-                isFinished: false
+                time: getCurrentTime(),
+                isComplete: null
             }
         },
         created(){
@@ -49,8 +49,8 @@
                         id: Date.now(),
                         name: this.name,
                         description: this.description,
-                        currentDatetime: getCurrentDateTime(),
-                        isFinished: false
+                        time: getCurrentTime(),
+                        isComplete: false
                     }
                 )
                 localStorage.setItem("tasks", JSON.stringify(this.tasks))

@@ -5,7 +5,7 @@
                 <div class="card-body">
                     <div class="btn-toolbar justify-content-between" role="toolbar">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" v-model="isComplete">
                             <p>{{ name }}</p>
                         </div>
                         <div class="btn-group" role="group" aria-label="First group">
@@ -17,7 +17,7 @@
                             </button>
                         </div>
                     </div>
-                    <p><em>{{ currentDateTime }}</em></p>              
+                    <p><em>{{ time }}</em></p>              
                 </div>
             </div><br>
         </div>
@@ -35,11 +35,18 @@
         props: {
             name: String,
             description: String,
-            currentDateTime: String,
-            items: Object
+            time: String,
+            isComplete: Boolean,
+            items: Object,
+            id: Number
         },
         created(){
             this.fetchTask();
+        },
+        computed: {
+            test(items){
+                return items.isComplete;
+            }
         },
         methods: {
             fetchTask(){

@@ -6,7 +6,7 @@
             </div>
         </div>
         <div v-for="(task, idx) in tasks" :key="idx">
-            <Tasks :name="task.name" :description="task.description" :items="task" v-on:on-delete="fetchTask"/>
+            <Tasks :name="task.name" :description="task.description" :time="task.time" :isComplete="task.isComplete" :items="task" v-on:on-delete="fetchTask"/>
         </div>
         <AddTaskButton/>
     </div>
